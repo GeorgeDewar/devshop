@@ -45,7 +45,12 @@ var gameState = {
   ]
 }
 
+var templates = {};
+
 function day() {
+  // Pay rent
+  gameState.money -= 100;
+
   // Pay salaries
   $.each(gameState.staff, function(ix, member) {
     gameState.money -= member.salary;
@@ -57,9 +62,22 @@ function day() {
 
 function updateDisplay() {
   $('.status').html('Money: $' + gameState.money);
+
+  staff = d3.select(".staff").selectAll(".staff-member")
+    .data(gameState.staff);
+  staff.enter().append("div");
+  staff.attr('class', 'staff-member')
+    .html(templates.employee);
+  staff.exit().remove();
 }
 
 $(function(){
+  // Load all templates
+  $('script[type="text/x-handlebars-template"]').each(function(ix, template) {
+    templates[$(this).data('name')] = Handlebars.compile($(this).html());
+  });
+  
   updateDisplay();
   window.setInterval(day, 3000);
+
 });

@@ -4,6 +4,8 @@
   <title>Devshop</title>
   <link rel="stylesheet" type="text/css" href="stylesheet.css"></link>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
   <script type="text/javascript" src="application.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
@@ -15,7 +17,15 @@
   <div class="main">
     You are paying your one employee $300 per day to do nothing, and there's nothing you can do about it! This game 
     might need some work.
+
+    <div class="staff"></div>
   </div>
 </div>
+
+<script data-name="employee" type="text/x-handlebars-template">
+  <div class="name">{{name}}</div>
+  <div class="info">Salary: {{salary}}</div>
+</script>
+
 </body>
 </html>
